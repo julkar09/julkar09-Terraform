@@ -1,4 +1,4 @@
-#Terraform and AWS CLI Installation & Usage
+# README: Terraform and AWS CLI Installation & Usage
 
 ## Overview
 This document provides a step-by-step guide to installing Terraform and AWS CLI on a Linux system, initializing a Terraform project, and deploying infrastructure using Terraform.
@@ -133,6 +133,37 @@ terraform destroy -auto-approve
 - Initializes Terraform for AWS.
 - Plans and applies the configuration to deploy AWS resources.
 - Destroys the infrastructure when no longer needed.
+
+---
+## Step 12: Terraform Configuration Files
+### `s3.tf` - S3 Bucket Configuration
+```
+# this is an S3 bucket
+resource "aws_s3_bucket" "my_bucket" {
+  bucket = "julkar-nine-bucket"
+}
+```
+### `terraform.tf` - Terraform Configuration
+```
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "5.92.0"
+    }
+  }
+}
+```
+### `provider.tf` - AWS Provider Configuration
+```
+provider "aws" {
+  region = "ap-south-1"
+}
+```
+**Explanation:**
+- `s3.tf`: Defines an AWS S3 bucket.
+- `terraform.tf`: Specifies Terraform provider version.
+- `provider.tf`: Sets AWS region for resource deployment.
 
 ---
 ## Conclusion
